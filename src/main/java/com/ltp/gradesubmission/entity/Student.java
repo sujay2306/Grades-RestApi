@@ -1,9 +1,14 @@
 package com.ltp.gradesubmission.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 @Entity   //Entity field maps to table column  @column maps to column
 @Table(name="student")
+@Getter
+@Setter
 public class Student {
     @Id //primarykey
     @GeneratedValue(strategy = GenerationType.IDENTITY)
