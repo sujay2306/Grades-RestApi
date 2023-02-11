@@ -1,11 +1,17 @@
 package com.ltp.gradesubmission.entity;
 
+import javax.persistence.*;
 import java.time.LocalDate;
-
+@Entity   //Entity field maps to table column  @column maps to column
+@Table(name="student")
 public class Student {
-
+    @Id //primarykey
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id" ,nullable=false)
     private Long id;
+    @Column(name="name", nullable = false)
     private String name;
+    @Column(name="birth_date", nullable = false)
     private LocalDate birthDate;
 
     public Long getId() {
