@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "grade")
 public class Grade {
-    @Id
+    @Id //primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private Long id;
