@@ -1,7 +1,9 @@
 package com.ltp.gradesubmission;
 
+import com.ltp.gradesubmission.entity.Course;
 import com.ltp.gradesubmission.entity.Grade;
 import com.ltp.gradesubmission.entity.Student;
+import com.ltp.gradesubmission.repository.CourseRepository;
 import com.ltp.gradesubmission.repository.GradeRepository;
 import com.ltp.gradesubmission.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ import java.time.LocalDate;
 public class GradeSubmissionApplication implements CommandLineRunner {
 	@Autowired
 	StudentRepository studentRepository;
+	@Autowired
+   CourseRepository courseRepository;
 
 	@Autowired
 	GradeRepository gradeRepository;
@@ -35,7 +39,16 @@ public class GradeSubmissionApplication implements CommandLineRunner {
 			studentRepository.save(students[i]);
 		}
 
-		Grade grade = new Grade( 1L, "A+", students[0]);
-		gradeRepository.save(grade);
+		Course[] courses = new Course[] {
+				new Course("Charms", "CH104", "In this class, you will learn spells concerned with giving an object new and unexpected properties."),
+				new Course("Defence Against the Dark Arts", "DADA", "In this class, you will learn defensive techniques against the dark arts."),
+				new Course("Herbology", "HB311", "In this class, you will learn the study of magical plants and how to take care of, utilise and combat them."),
+				new Course("History of Magic", "HIS393", "In this class, you will learn about significant events in wizarding history."),
+				new Course("Potions", "POT102", "In this class, you will learn correct mixing and stirring of ingredients to create mixtures with magical effects."),
+				new Course("Transfiguration", "TR442", "In this class, you will learn the art of changing the form or appearance of an object.")
+		};
+		for (int i=0; i< courses.length; i++){
+			courseRepository.save(courses[i]);
+		}
 	}
 }
