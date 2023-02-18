@@ -6,15 +6,19 @@ import com.ltp.gradesubmission.entity.Grade;
 import com.ltp.gradesubmission.entity.Student;
 import com.ltp.gradesubmission.repository.GradeRepository;
 import com.ltp.gradesubmission.repository.StudentRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@AllArgsConstructor
 @Service
 public class GradeServiceImpl implements GradeService {
-    @Autowired
+//    commenting autowired because using lambook constructor "allargs""
+//    @Autowired
     GradeRepository gradeRepository;
-    @Autowired
+//    @Autowired
     StudentRepository studentRepository;
+
 
     @Override
     public Grade getGrade(Long studentId, Long courseId) {
@@ -52,5 +56,7 @@ public class GradeServiceImpl implements GradeService {
     public List<Grade> getAllGrades() {
         return null;
     }
+
+
 
 }

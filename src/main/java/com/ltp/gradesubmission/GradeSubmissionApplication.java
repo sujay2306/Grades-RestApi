@@ -1,6 +1,8 @@
 package com.ltp.gradesubmission;
 
+import com.ltp.gradesubmission.entity.Grade;
 import com.ltp.gradesubmission.entity.Student;
+import com.ltp.gradesubmission.repository.GradeRepository;
 import com.ltp.gradesubmission.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -13,6 +15,9 @@ import java.time.LocalDate;
 public class GradeSubmissionApplication implements CommandLineRunner {
 	@Autowired
 	StudentRepository studentRepository;
+
+	@Autowired
+	GradeRepository gradeRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(GradeSubmissionApplication.class, args);
 	}
@@ -29,5 +34,8 @@ public class GradeSubmissionApplication implements CommandLineRunner {
 		for (int i=0; i< students.length; i++){
 			studentRepository.save(students[i]);
 		}
+
+		Grade grade = new Grade( 1L, "A+", students[0]);
+		gradeRepository.save(grade);
 	}
 }

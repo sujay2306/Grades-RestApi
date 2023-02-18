@@ -1,19 +1,28 @@
 package com.ltp.gradesubmission.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import javax.persistence.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "course")
 public class Course {
-
+    @Id //primary key
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
+    @NonNull
+    @Column(name = "subject", nullable = false)
     private String subject;
+    @NonNull
+    @Column(name = "code", nullable = false)
     private String code;
+    @NonNull
+    @Column(name = "description", nullable = false)
     private String description;
 
 }
